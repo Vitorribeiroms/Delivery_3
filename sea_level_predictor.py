@@ -8,17 +8,15 @@ def draw_plot():
     # usando a biblioteca pandas. Chamei a minha tabela de 'dados'.
     dados = pd.read_csv('epa-sea-level.csv')
 
-    # Para garantir que meu gráfico fique com um bom tamanho, eu defino as dimensões da figura.
+    # Para garantir que meu gráfico fique com um bom tamanho, eu defino as dimensões da figura no seguinte comando abixo.
     plt.figure(figsize=(14, 7))
     
-    # --------------------------------------------------------------------------
 
     # ETAPA 2: Criar o gráfico de dispersão.
     # Agora, aqui eu pego os meus 'dados' e crio um gráfico de pontos ('scatter plot').
     # No eixo X, eu coloco a coluna 'Year' e no eixo Y, a 'CSIRO Adjusted Sea Level'.
     plt.scatter(x=dados['Year'], y=dados['CSIRO Adjusted Sea Level'], label='Dados Históricos')
 
-    # --------------------------------------------------------------------------
 
     # ETAPA 3: Criar a primeira linha de tendência.
     # Para fazer a previsão, aqui eu calculo a regressão linear de todos os dados.
@@ -35,13 +33,12 @@ def draw_plot():
     # Por fim, eu desenho essa linha de previsão no meu gráfico, usando a cor vermelha e tracejada.
     plt.plot(anos_predicao_geral, nivel_predicao_geral, 'r--', label='Previsão (1880-2050)')
     
-    # --------------------------------------------------------------------------
 
     # ETAPA 4: Criar a segunda linha de tendência.
     # Eu percebi que talvez a tendência de subida do mar tenha acelerado. Para verificar isso,
     # decidi criar uma nova linha de tendência usando apenas os dados a partir do ano 2000.
-    
-    # Primeiro, aqui eu filtro minha tabela original para pegar somente as linhas com ano maior ou igual a 2000.
+
+    # Primeiro, aqui eu vou filtrar minha tabela original para pegar somente as linhas com ano maior ou igual a 2000.
     dados_recentes = dados[dados['Year'] >= 2000]
     
     # Agora, eu repito o cálculo da regressão linear, mas dessa vez só com esses 'dados_recentes'.
@@ -56,7 +53,6 @@ def draw_plot():
     # Já neste plot, eu desenho a segunda linha no gráfico, agora com a cor verde, para comparar com a primeira.
     plt.plot(anos_predicao_recente, nivel_predicao_recente, 'g', label='Previsão Acelerada (2000-2050)', linewidth=2)
 
-    # --------------------------------------------------------------------------
 
     # ETAPA 5: Adicionar rótulos e título.
     # Para que meu gráfico seja fácil de entender, aqui eu adiciono um título principal,
@@ -69,7 +65,6 @@ def draw_plot():
     plt.legend()
     plt.grid(True, linestyle=':', alpha=0.5)
     
-    # --------------------------------------------------------------------------
     
     # Salvar o gráfico e retornar os dados para teste (NÃO MODIFICAR)
     plt.savefig('sea_level_plot.png')
