@@ -44,7 +44,7 @@ def draw_plot():
     # Agora, eu repito o cálculo da regressão linear, mas dessa vez só com esses 'dados_recentes'.
     res_recente = linregress(x=dados_recentes['Year'], y=dados_recentes['CSIRO Adjusted Sea Level'])
     
-    # A lista de anos para essa nova previsão vai de 2000 até 2050.
+    # A lista de anos para essa nova previsão vai de 2000 até 2050
     anos_predicao_recente = range(2000, 2051)
     
     # E calculo novamente os valores previstos com base nesta nova tendência.
@@ -57,9 +57,9 @@ def draw_plot():
     # ETAPA 5: Adicionar rótulos e título.
     # Para que meu gráfico seja fácil de entender, aqui eu adiciono um título principal,
     # e também nomes para os eixos X e Y.
-    plt.title('Aumento do Nível do Mar', fontsize=16)
-    plt.xlabel('Ano', fontsize=12)
-    plt.ylabel('Nível do Mar Ajustado (polegadas)', fontsize=12)
+    plt.title('Rise in Sea Level', fontsize=16)
+    plt.xlabel('Year', fontsize=12)
+    plt.ylabel('Sea Level (inches)', fontsize=12)
     
     # E para finalizar, eu também adiciono uma legenda para explicar o que cada cor significa e uma grade.
     plt.legend()
